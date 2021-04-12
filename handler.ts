@@ -1,15 +1,21 @@
-import { Context, APIGatewayEvent, APIGatewayProxyResult } from "aws-lambda";
+import { Context, APIGatewayEvent, APIGatewayProxyHandler } from "aws-lambda";
+import { calculateInterest, wrapper } from './lib';
 
-export async function hello(
-  event: APIGatewayEvent,
-  context: Context
-): Promise<APIGatewayProxyResult> {
-  return {
-    statusCode: 200,
-    body: JSON.stringify({
-      message: "Go Serverless v2.0! Your function executed successfully!",
-      context,
-      event,
-    }),
-  };
-}
+export const calculate: APIGatewayProxyHandler = wrapper(async (event: APIGatewayEvent, _context: Context) => {
+  console.log('event', event);
+
+
+  const { queryStringParameters } = event;
+  const l = Number(queryStringParameters.l)
+  const f = Number(queryStringParameters.f)
+  const n = Number(queryStringParameters.n)
+
+  console.log('l', l);
+  console.log('f', f);
+  console.log('n', n);
+
+  const res = calculateInterest(l,f,n)
+  console.log(res);
+
+  return res;
+})
