@@ -67,6 +67,8 @@ function calculateInterest(l: number, f: number, n: number){
     effective_annual: Math.pow(1+curr_i, 12)-1,
     exact,
     iterations: j,
+    total_payments: f*n,
+    total_interest: f*n-l,
     input: {
       l,
       f,
