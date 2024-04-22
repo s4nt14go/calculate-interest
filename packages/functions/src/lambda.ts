@@ -64,12 +64,12 @@ function calculateInterest(l: number, f: number, n: number){
   const res = {
     monthly: curr_i,
     nominal_anual: 12*curr_i,
-    effective_annual: Math.pow(1+curr_i, 12)-1,
+    // effective_annual: Math.pow(1+curr_i, 12)-1,
     exact,
     iterations: j,
     total_payments: f*n,
     total_interest: f*n-l,
-    last_month_effective: Math.pow(1+curr_i, n) - 1,
+    // last_month_effective: Math.pow(1+curr_i, n) - 1,
     input: {
       l,
       f,
