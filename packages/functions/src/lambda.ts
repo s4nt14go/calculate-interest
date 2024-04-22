@@ -69,6 +69,7 @@ function calculateInterest(l: number, f: number, n: number){
     iterations: j,
     total_payments: f*n,
     total_interest: f*n-l,
+    last_month_effective: Math.pow(1+curr_i, n) - 1,
     input: {
       l,
       f,
